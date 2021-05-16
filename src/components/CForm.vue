@@ -70,6 +70,7 @@ import CButton from "./CButton.vue";
 import CImage from "./CImage.vue";
 import {h} from "vue";
 let blanket = document.getElementById('blanket');
+console.log(blanket)
 export default {
 
   components:{CImage, CButton, CInput, CCode},
@@ -77,6 +78,9 @@ export default {
     formName:{type:String}
   },
   computed:{
+    blanket(){
+      return document.getElementById('blanket')
+    },
     url_request(){
       if (this.formName === 'Register'){
         return this.$store.state.url_register;
@@ -125,39 +129,39 @@ export default {
   methods:{
     async deletedPhoto(e){
       e.preventDefault();
-      blanket.style.display = 'block'
+      this.blanket.style.display = 'block'
       let res  = await fetch(this.$store.state.url_my_photo_deleted , {
         method: 'GET',
         headers:{
           'Authorization':  this.$store.state.access_token,
         },
       })
-      blanket.style.display = 'none'
+      this.blanket.style.display = 'none'
       let result = await res.json();
       this.res = result
       this.$emit('deletedPhoto' , result)
     },
     async myPhotos(e){
       e.preventDefault();
-      blanket.style.display = 'block'
+      this.blanket.style.display = 'block'
       let res  = await fetch(this.$store.state.url_my_photos , {
         method: 'GET',
         headers:{
           'Authorization':  this.$store.state.access_token,
         },
       })
-      blanket.style.display = 'none'
+      this.blanket.style.display = 'none'
       let result = await res.json();
       this.res = result
       this.$emit('myPhotos' , result)
     },
     async getPhotos(e){
       e.preventDefault()
-      blanket.style.display = 'block'
+      this.blanket.style.display = 'block'
       let res = await fetch(this.$store.state.url_photos , {
         method: 'GET',
       })
-      blanket.style.display = 'none'
+      this.blanket.style.display = 'none'
       let result = await res.json();
       this.res = result
       this.$emit('getValue' , result)
@@ -166,7 +170,7 @@ export default {
       e.preventDefault()
       let addPhoto = document.getElementById('add-photo');
       let formData = new FormData(addPhoto);
-      blanket.style.display = 'block'
+      this.blanket.style.display = 'block'
       let res = await fetch(this.$store.state.url_add_photo , {
         method: 'POST',
         headers:{
@@ -175,7 +179,7 @@ export default {
         },
         body: formData
       })
-      blanket.style.display = 'none'
+      this.blanket.style.display = 'none'
       let result = await res.json();
       this.res = result;
     },
@@ -183,7 +187,7 @@ export default {
       e.preventDefault()
       let profile = document.getElementById('profile');
       let formData = new FormData(profile);
-      blanket.style.display = 'block'
+      this.blanket.style.display = 'block'
       let res = await fetch(this.$store.state.url_profile , {
         method: 'POST',
         headers:{
@@ -192,7 +196,7 @@ export default {
         },
         body: formData
       })
-      blanket.style.display = 'none'
+      this.blanket.style.display = 'none'
      if (res.ok){
        let result = await res.json();
        this.res = result;
@@ -207,7 +211,7 @@ export default {
       let {target} = e;
       e.preventDefault()
       if (target && target.id === 'login'){
-        blanket.style.display = 'block'
+        this.blanket.style.display = 'block'
         let data = this.user_input;
         let json = JSON.stringify(data);
         let res = await fetch(this.$store.state.url_login , {
@@ -219,7 +223,7 @@ export default {
           body: json
 
         })
-        blanket.style.display = 'none'
+        this.blanket.style.display = 'none'
         if (res.ok){
           let result = await res.json();
           this.res = result;
@@ -236,7 +240,7 @@ export default {
       let {target} = e;
       e.preventDefault()
       if (target && target.id === 'register'){
-        blanket.style.display = 'block'
+        this.blanket.style.display = 'block'
         let data = this.user_input;
         let json = JSON.stringify(data);
         let res = await fetch(this.$store.state.url_register , {
@@ -248,7 +252,7 @@ export default {
           body: json
 
         })
-        blanket.style.display = 'none'
+        this.blanket.style.display = 'none'
         if (res.ok){
           let result = await res.json();
           this.res = result

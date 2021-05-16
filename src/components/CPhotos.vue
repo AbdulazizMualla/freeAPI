@@ -2,14 +2,14 @@
 <c-form :form-name="'Get photos'" @getValue="getValue($event)"/>
 
   <div class="row mt-5" v-if="photos.data">
-    <div class="py-5" v-if="photos.meta.to !== photos.meta.total">
+    <div class="py-5" v-if="photos.meta.to !== photos.meta.total && photos.meta.to !== null">
       <c-button :type="'click'" :styl="'btn btn-success'" :html="'Brows more'" @click="getResult"></c-button>
     </div>
 
     <div class="col-12 col-md-4 mb-3" v-for="photo in photos.data">
       <c-card show-photo-header="showPhotoHeader">
         <template v-slot:header>
-        <span><c-image :src="photo.user.profile.file_url" :styl="'img-fluid rounded-circle border mx-auto'"/></span> <span> {{photo.user.name}}</span>
+        <span ><c-image v-if="photo.user.profile" :src="photo.user.profile.file_url" :styl="'img-fluid rounded-circle border mx-auto'"/></span> <span> {{photo.user.name}}</span>
         </template>
         <template v-slot:body>
 

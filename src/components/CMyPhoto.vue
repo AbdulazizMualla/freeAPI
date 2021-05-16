@@ -1,9 +1,5 @@
 <template>
-
     <c-form :form-name="'My photos'" @myPhotos="myPhoto($event)"/>
-  <div class="col-md-8 border p-4">
-  </div>
-
   <div class="row mt-5" v-if="myPhotos.user">
     <div class="alert alert-success" v-if="message">{{message}}</div>
     <div class="col-12 col-md-4 mb-3" v-for="photo in myPhotos.user.photos">
