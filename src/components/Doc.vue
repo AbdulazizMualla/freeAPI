@@ -22,7 +22,7 @@
         </div>
        <div class="m-5 mt-0">
          <h5><b><u>Request</u></b></h5>
-         <h6><b>url:</b> <span>http://127.0.0.1:8000/register</span></h6>
+         <h6><b>url:</b> <span>https://api.tawfeg.com/api/register</span></h6>
          <h6><b>method:</b> <span>POST</span></h6>
          <h6><b>headers:</b></h6>
          <p> Accept: application/json</p>
@@ -69,7 +69,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>http://127.0.0.1:8000/login</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfeg.com/api/login</span></h6>
           <h6><b>method:</b> <span>POST</span></h6>
           <h6><b>headers:</b></h6>
           <p> Accept: application/json</p>
@@ -122,7 +122,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>http://127.0.0.1:8000/profile</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfeg.com/api/profile</span></h6>
           <h6><b>method:</b> <span>POST</span></h6>
           <h6><b>headers:</b></h6>
           <p> Accept: application/json</p>
@@ -175,7 +175,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>http://127.0.0.1:8000/photos</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfeg.com/api/photos</span></h6>
           <h6><b>method:</b> <span>POST</span></h6>
           <h6><b>headers:</b></h6>
           <p> Accept: application/json</p>
@@ -228,7 +228,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>http://127.0.0.1:8000/photos</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfeg.com/api/photos</span></h6>
           <h6><b>method:</b> <span>GET</span></h6>
           <h5><b><u>Response</u></b></h5>
           <p>Type: json</p>
@@ -264,7 +264,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>http://127.0.0.1:8000/my-photos</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfeg.com/api/my-photos</span></h6>
           <h6><b>method:</b> <span>GET</span></h6>
           <h6><b>headers:</b></h6>
           <p> Authorization:  access_token <span class="text-danger">(Token returned after login or registration)</span></p>
@@ -301,7 +301,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>http://127.0.0.1:8000/api/photos/{photoId}</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfeg.com/api/photos/{photoId}</span></h6>
           <h6><b>method:</b> <span>DELETE</span></h6>
           <h6><b>headers:</b></h6>
           <p> Accept: application/json</p>
