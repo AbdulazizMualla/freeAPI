@@ -9,7 +9,7 @@ export default {
   components: {CForm},
   beforeRouteEnter(to , from , next){
     if (!store.state.user){
-      alert('You need login first')
+      store.state.routeFrom = to.name
       next('/test/login')
     }else {
       next()

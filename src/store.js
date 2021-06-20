@@ -14,6 +14,7 @@ export const store = createStore({
             url_my_photo_deleted: api_url+'deleted-photos',
             access_token: localStorage.getItem('token'),
             user: JSON.parse(JSON.stringify(localStorage.getItem('user'))),
+            routeFrom: ''
         }
     },
     mutations:{

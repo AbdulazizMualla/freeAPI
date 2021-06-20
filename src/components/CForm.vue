@@ -68,9 +68,8 @@ import CCode from "./CCode.vue";
 import CInput from "./CInput.vue";
 import CButton from "./CButton.vue";
 import CImage from "./CImage.vue";
-import {h} from "vue";
+
 let blanket = document.getElementById('blanket');
-console.log(blanket)
 export default {
 
   components:{CImage, CButton, CInput, CCode},
