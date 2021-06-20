@@ -36,7 +36,6 @@ import CForm from "./CForm.vue";
 export default {
   components: {CCard, CImage , CForm},
   beforeRouteEnter(to , from , next){
-    console.log(store.state.access_token)
     if (!store.state.user){
       alert('You need login first')
       next('/test/login')
