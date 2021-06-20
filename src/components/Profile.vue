@@ -11,7 +11,7 @@ export default {
 
   beforeRouteEnter(to , from , next){
 
-    if (!store.state.user.id){
+    if (!store.state.user){
       alert('You need login first')
       next('/test/login')
     }else {

@@ -12,15 +12,17 @@ export const store = createStore({
             url_my_photo_delete: api_url+'photos/',
             url_my_photo_force_delete: '',
             url_my_photo_deleted: api_url+'deleted-photos',
-            access_token: '',
-            user: {},
+            access_token: localStorage.getItem('token'),
+            user: JSON.parse(JSON.stringify(localStorage.getItem('user'))),
         }
     },
     mutations:{
         updateAccessToken(state, token){
-            state.access_token  = token;
+            localStorage.setItem('token' , token)
+            state.access_token  = `Bearer ${token}`;
         },
         updateUser(state, user){
+            localStorage.setItem('user' , JSON.stringify(user))
             state.user  = user;
         },
         setForceDeletePhotoUrl(state , photoId){
@@ -31,7 +33,7 @@ export const store = createStore({
     actions:{
         updateValueToken(ctx , result){
            if (result.access_token){
-               ctx.commit('updateAccessToken' , `Bearer ${result.access_token}`);
+               ctx.commit('updateAccessToken' , result.access_token);
            }
             ctx.commit('updateUser' , result.user);
         },
