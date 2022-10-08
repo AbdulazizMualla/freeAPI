@@ -45,6 +45,21 @@
           <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="'Save'"/>
         </form>
       </div>
+
+
+
+      <div v-if="formName === 'Get posts'">
+        <form id="posts" @submit="getPosts">
+          <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="formName"/>
+        </form>
+      </div>
+
+      <div v-if="formName === 'My posts'">
+        <form id="my-posts" @submit="myPosts">
+          <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="formName"/>
+        </form>
+      </div>
+
       <div v-if="formName === 'Get photos'">
         <form id="photos" @submit="getPhotos">
           <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="formName"/>
@@ -91,6 +106,10 @@ export default {
         return this.$store.state.url_add_photo;
       }else if (this.formName === 'Get photos'){
         return this.$store.state.url_photos;
+      }else if (this.formName === 'Get posts'){
+        return this.$store.state.url_posts;
+      }else if (this.formName === 'My posts'){
+        return this.$store.state.url_my_posts;
       }else if (this.formName === 'My photos'){
         return this.$store.state.url_my_photos;
       }else if (this.formName === 'Deleted photo'){
@@ -153,6 +172,31 @@ export default {
       let result = await res.json();
       this.res = result
       this.$emit('myPhotos' , result)
+    },
+    async myPosts(e){
+      e.preventDefault();
+      this.blanket.style.display = 'block'
+      let res  = await fetch(this.$store.state.url_my_posts , {
+        method: 'GET',
+        headers:{
+          'Authorization':  this.$store.state.access_token,
+        },
+      })
+      this.blanket.style.display = 'none'
+      let result = await res.json();
+      this.res = result
+      this.$emit('getValue' , result)
+    },
+    async getPosts(e){
+      e.preventDefault()
+      this.blanket.style.display = 'block'
+      let res = await fetch(this.$store.state.url_posts , {
+        method: 'GET',
+      })
+      this.blanket.style.display = 'none'
+      let result = await res.json();
+      this.res = result
+      this.$emit('getValue' , result)
     },
     async getPhotos(e){
       e.preventDefault()

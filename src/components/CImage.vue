@@ -1,11 +1,10 @@
 <template>
-  <img :src="src" :class="styl" class="imageShowPhoto" alt="">
+  <img :src="src" :class="styl" class="imageShowPhoto" alt="N/A">
 </template>
 <script>
 export default {
-
   props:{
-    src:{type:String},
+    src:{type:String, default:'/users/icon-user.png'},
     styl:{type:String}
   },
 }

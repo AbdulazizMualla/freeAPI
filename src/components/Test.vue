@@ -24,6 +24,15 @@
             </router-link>
           </div>
         </div>
+        <div>
+          <h3><u>Post</u></h3>
+          <div  v-for="item in routesPost">
+            <router-link :to="item.route" class="nav-link text-secondary" >
+              <i :class="item.icon" aria-hidden="true"></i>
+              <span class="p-1">{{item.name}}</span>
+            </router-link>
+          </div>
+        </div>
       </div>
       <div class="col-lg-10" >
         <div>
@@ -85,6 +94,23 @@ export default {
           name: 'trash',
           route: '/test/trash',
           icon: 'fa fa-trash-alt'
+        }
+      ],
+      routesPost: [
+        {
+          name:'posts',
+          route:'/test/posts',
+          icon:'fa fa-clipboard'
+        },
+        {
+          name:'my-posts',
+          route: '/test/my-posts',
+          icon: 'fa fa-clipboard'
+        },
+        {
+          name:'add-post',
+          route: '/test/add-post',
+          icon: 'fa fa-clipboard'
         }
       ],
 

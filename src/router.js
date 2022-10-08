@@ -9,6 +9,9 @@ import CPhotos from "./components/CPhotos.vue";
 import CCreatePhoto from "./components/CCreatePhoto.vue";
 import CMyPhoto from "./components/CMyPhoto.vue";
 import CTrash from "./components/CTrash.vue";
+import CPost from "./components/CPost.vue";
+import CMyPost from "./components/CMyPost.vue";
+import CAddPost from "./components/CAddPost.vue";
 
 
 export const router = createRouter({
@@ -63,6 +66,21 @@ export const router = createRouter({
                     path:'/test/trash',
                     component:CTrash,
                     name:'trash'
+                },
+                {
+                    path:'/test/posts',
+                    component:CPost,
+                    name:'posts'
+                },
+                {
+                    path:'/test/my-posts',
+                    component:CMyPost,
+                    name:'my-posts'
+                },
+                {
+                    path:'/test/add-posts',
+                    component:CAddPost,
+                    name:'add-posts'
                 }
             ]
         },
