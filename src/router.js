@@ -78,9 +78,9 @@ export const router = createRouter({
                     name:'my-posts'
                 },
                 {
-                    path:'/test/add-posts',
+                    path:'/test/add-post',
                     component:CAddPost,
-                    name:'add-posts'
+                    name:'add-post'
                 }
             ]
         },

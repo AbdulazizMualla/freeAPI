@@ -2,16 +2,18 @@
 <pre class='code code-css '>
 <label>Request</label>
 <code>
-  <div v-if="formName === 'Profile' || formName === 'Add photo'">
-    <span class="js-comment" v-if="formName === 'Profile'">// form id = profile</span><span class="js-comment" v-if="formName === 'Add photo'">// form id = add-photo</span>
+  <div v-if="formName === 'Profile' || formName === 'Add photo' || formName === 'Add post'">
+    <span class="js-comment" v-if="formName === 'Profile'">// form id = profile</span><span class="js-comment" v-if="formName === 'Add photo'">// form id = add-photo</span><span class="js-comment" v-if="formName === 'Add post'">// form id = add_post</span>
     <span class="js-comment" v-if="name">// input type="text" name="name" value="{{name}}"</span>
     <span class="js-comment" v-if="email">// input type="email" name="email" value="{{email}}"</span>
     <span class="js-comment" v-if="title">// input type="text" name="title" value="{{title}}"</span>
+     <span class="js-comment" v-if="post_title">// input type="text" name="post_title" value="{{post_title}}"</span>
     <span class="js-comment" v-if="description">// input type="text" name="description" value="{{description}}"</span>
-    <span class="js-comment">// input type="file" name="file"</span>
+     <span class="js-comment" v-if="post_body">// textarea name="post_body" value="{{post_body}}"</span>
+    <span class="js-comment" v-if="formName === 'Profile' || formName === 'Add photo'">// input type="file" name="file"</span>
 
-     <span class="js-function">let <span class="js-punctuation">profile</span><span class="js-punctuation"> = </span><span class="js-key">document</span><span class="js-punctuation">.</span><span class="js-method">getElementById</span><span class="js-punctuation">(</span><span class="js-string">'profile'</span><span class="js-punctuation">)</span>
-     <span class="js-function">let </span><span class="js-punctuation">formData</span><span class="js-punctuation"> = </span><span class="js-function">new </span><span class="js-key">FormData</span><span class="js-punctuation">(</span><span class="js-punctuation">profile</span><span class="js-punctuation">)</span>
+     <span class="js-function">let <span class="js-punctuation">form</span><span class="js-punctuation"> = </span><span class="js-key">document</span><span class="js-punctuation">.</span><span class="js-method">getElementById</span><span class="js-punctuation">(</span><span class="js-string">'form id'</span><span class="js-punctuation">)</span>
+     <span class="js-function">let </span><span class="js-punctuation">formData</span><span class="js-punctuation"> = </span><span class="js-function">new </span><span class="js-key">FormData</span><span class="js-punctuation">(</span><span class="js-punctuation">form</span><span class="js-punctuation">)</span>
      </span>
      <span class="js-function">fetch<span class="js-punctuation">(</span><span class="js-string">'{{url_request}}'</span><span class="js-function">,</span> <span class="js-punctuation"> {</span>
            <span class="js-key">method<span class="js-punctuation">:</span> <span class="js-string">'POST'</span><span class="js-function">,</span></span>
@@ -62,6 +64,8 @@ export default {
     password:{type:String},
     password_confirmation:{type:String},
     description: {type:String},
+    post_body: {type:String},
+    post_title: {type:String},
     title:{type:String},
     url_request: {type:String},
     formName: {type:String}

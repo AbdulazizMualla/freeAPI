@@ -12,7 +12,7 @@
   <div class="row justify-content-center">
 
     <div class="col-md-12">
-      <c-req-pre :form-name="formName" :name="user_input.name" :email="user_input.email" :password="user_input.password" :password_confirmation="user_input.password_confirmation" :url_request="url_request" :description="user_input.description" :title="user_input.title"/>
+      <c-req-pre :post_title="post.post_title" :post_body="post.post_body" :form-name="formName" :name="user_input.name" :email="user_input.email" :password="user_input.password" :password_confirmation="user_input.password_confirmation" :url_request="url_request" :description="user_input.description" :title="user_input.title"/>
     </div>
   </div>
 
@@ -25,6 +25,7 @@ export default {
   components: {CReqPre, CSpan},
   props:{
     user_input:{type:Object},
+    post:{type:Object},
     res: {type:Object},
     url_request: {type:String},
     formName: {type:String}

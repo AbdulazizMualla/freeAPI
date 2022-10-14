@@ -1,7 +1,7 @@
 <template>
   <div class="row  ">
     <div class="col-md-8 border p-4">
-      <c-code :user_input="user_input" :res="res" :url_request="url_request" :form-name="formName"/>
+      <c-code :post="post" :user_input="user_input" :res="res" :url_request="url_request" :form-name="formName"/>
     </div>
     <div class="col-md-4  border p-4">
       <div v-if="formName === 'Register'">
@@ -46,7 +46,14 @@
         </form>
       </div>
 
-
+      <div v-if="formName === 'Add post'">
+        <h4>{{formName}}</h4>
+        <form id="add-post" @submit="addPost" enctype="multipart/form-data">
+          <c-input :name="'post_title'" @getInput="post.post_title = $event" :type="'text'" :placeholder="'Post title'" :title="'Post title'" :value="post.post_title"/>
+          <c-text-area :name="'post_body'" @getInput="post.post_body = $event" :title="'Post body'">{{post.post_body}}</c-text-area>
+          <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="'Save'"/>
+        </form>
+      </div>
 
       <div v-if="formName === 'Get posts'">
         <form id="posts" @submit="getPosts">
@@ -83,11 +90,12 @@ import CCode from "./CCode.vue";
 import CInput from "./CInput.vue";
 import CButton from "./CButton.vue";
 import CImage from "./CImage.vue";
+import CTextArea from "./CTextArea.vue";
 
 let blanket = document.getElementById('blanket');
 export default {
 
-  components:{CImage, CButton, CInput, CCode},
+  components:{CTextArea, CImage, CButton, CInput, CCode},
   props:{
     formName:{type:String}
   },
@@ -110,6 +118,8 @@ export default {
         return this.$store.state.url_posts;
       }else if (this.formName === 'My posts'){
         return this.$store.state.url_my_posts;
+      }else if (this.formName === 'Add post') {
+        return this.$store.state.url_add_post;
       }else if (this.formName === 'My photos'){
         return this.$store.state.url_my_photos;
       }else if (this.formName === 'Deleted photo'){
@@ -135,6 +145,10 @@ export default {
         title: ''
       },
       res: null,
+      post : {
+        post_title : '',
+        post_body : ''
+      }
     }
   },
   mounted() {
@@ -208,6 +222,22 @@ export default {
       let result = await res.json();
       this.res = result
       this.$emit('getValue' , result)
+    },
+    async addPost(e){
+      e.preventDefault()
+      let addPost = document.getElementById('add-post');
+      let formData = new FormData(addPost);
+      this.blanket.style.display = 'block'
+      let res = await fetch(this.$store.state.url_add_post , {
+        method: 'POST',
+        headers:{
+          'Accept': 'application/json',
+          'Authorization':  this.$store.state.access_token,
+        },
+        body: formData
+      })
+      this.blanket.style.display = 'none'
+      this.res = await res.json();
     },
     async addPhoto(e){
       e.preventDefault()

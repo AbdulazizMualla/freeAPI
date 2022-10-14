@@ -1,10 +1,15 @@
 <template>
-
+  <c-form :form-name="'Add post'"></c-form>
 </template>
 
 <script>
+import CForm from "./CForm.vue";
 export default {
-  name: "CAddPost"
+  name: "CAddPost",
+  components: {CForm},
+  mounted() {
+    console.log()
+  }
 }
 </script>
 
