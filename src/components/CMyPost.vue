@@ -1,6 +1,6 @@
 <template>
   <c-form :form-name="'My posts'" @getValue="getValue($event)"/>
-  <c-post-temp :posts="posts"/>
+  <c-post-temp :posts="posts" @getValue="getValue($event)"/>
 </template>
 
 <script>

@@ -14,6 +14,7 @@ export const store = createStore({
             url_posts: api_url+'posts/',
             url_my_posts: api_url+'my-posts',
             url_my_photo_deleted: api_url+'deleted-photos',
+            url_my_post_deleted: api_url+'posts/',
             access_token: localStorage.getItem('token'),
             user: JSON.parse(JSON.stringify(localStorage.getItem('user'))),
             routeFrom: ''
