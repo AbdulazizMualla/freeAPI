@@ -28,7 +28,7 @@
   <div v-else-if="formName === 'Get photos' || formName === 'Get posts'">
     <span class="js-function">fetch<span class="js-punctuation">(</span><span class="js-string">'{{url_request}}'</span><span class="js-function">,</span> <span class="js-punctuation"> {</span><span class="js-key">method<span class="js-punctuation">:</span> <span class="js-string">'GET'</span> <span class="js-punctuation">}<span class="js-punctuation">)</span></span></span></span>
   </div>
-  <div v-else-if="formName === 'My photos' || formName === 'Deleted photo' || formName === 'My posts'">
+  <div v-else-if="formName === 'My photos' || formName === 'Deleted photo' || formName === 'My posts' || formName === 'Deleted posts'">
     <span class="js-function">fetch<span class="js-punctuation">(</span><span class="js-string">'{{url_request}}'</span><span class="js-function">,</span> <span class="js-punctuation"> {</span>
             <span class="js-key">method<span class="js-punctuation">:</span> <span class="js-string">'GET'</span>
             <span class="js-key">headers <span class="js-punctuation">:</span><span class="js-punctuation"> {</span></span>

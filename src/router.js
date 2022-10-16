@@ -12,6 +12,7 @@ import CTrash from "./components/CTrash.vue";
 import CPost from "./components/CPost.vue";
 import CMyPost from "./components/CMyPost.vue";
 import CAddPost from "./components/CAddPost.vue";
+import CMyPostTrashed from "./components/CMyPostTrashed.vue";
 
 
 export const router = createRouter({
@@ -81,6 +82,11 @@ export const router = createRouter({
                     path:'/test/add-post',
                     component:CAddPost,
                     name:'add-post'
+                },
+                {
+                    path:'/test/posts/trash',
+                    component:CMyPostTrashed,
+                    name:'posts-trash'
                 }
             ]
         },

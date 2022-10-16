@@ -10,7 +10,7 @@
         <p>{{posts.post_body}}</p>
         <p>{{posts.id}}</p>
         <c-button :type="'click'" :styl="'btn btn-primary m-1'" :html="'reply'"></c-button>
-        <c-button v-if="$route.name === 'my-posts'" :type="'click'" :styl="'btn btn-danger m-1'" :html="'delete'" @click="deletePost(posts.id)"></c-button>
+        <c-button v-if="$route.name === 'my-posts' || $route.name === 'posts-trash'" :type="'click'" :styl="'btn btn-danger m-1'" :html="'delete'" @click="deletePost(posts.id)"></c-button>
         <c-button v-if="$route.name === 'my-posts'" :type="'click'" :styl="'btn btn-info m-1'" :html="'edit'"></c-button>
 
         <div class="p-3 m-2 border border-1 " v-for="comment in posts.comments">
@@ -96,7 +96,7 @@ export default {
     },
     async deletePost(postId){
       this.blanket.style.display = 'block'
-      let res = await fetch(this.$store.state.url_my_post_deleted+postId , {
+      let res = await fetch(this.$store.state.url_my_post_delete+postId , {
         method: 'DELETE',
         headers:{
           'Accept': 'application/json',

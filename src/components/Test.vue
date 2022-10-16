@@ -111,6 +111,11 @@ export default {
           name:'add-post',
           route: '/test/add-post',
           icon: 'fa fa-clipboard'
+        },
+        {
+          name:'trash',
+          route: '/test/posts/trash',
+          icon: 'fa fa-clipboard'
         }
       ],
 

@@ -82,6 +82,11 @@
           <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="formName"/>
         </form>
       </div>
+      <div v-if="formName === 'Deleted posts'">
+        <form id="deleted-posts" @submit="deletedPost">
+          <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="formName"/>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -124,6 +129,8 @@ export default {
         return this.$store.state.url_my_photos;
       }else if (this.formName === 'Deleted photo'){
         return  this.$store.state.url_my_photo_deleted;
+      }else if (this.formName === 'Deleted posts'){
+        return  this.$store.state.url_my_post_deleted;
       }
     },
     get_image(){
@@ -159,6 +166,20 @@ export default {
     }
   },
   methods:{
+    async deletedPost(e){
+      e.preventDefault();
+      this.blanket.style.display = 'block'
+      let res  = await fetch(this.$store.state.url_my_post_deleted , {
+        method: 'GET',
+        headers:{
+          'Authorization':  this.$store.state.access_token,
+        },
+      })
+      this.blanket.style.display = 'none'
+      let result = await res.json();
+      this.res = result
+      this.$emit('deletedPost' , result)
+    },
     async deletedPhoto(e){
       e.preventDefault();
       this.blanket.style.display = 'block'
