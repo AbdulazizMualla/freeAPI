@@ -8,7 +8,8 @@
       <div class="post">
         <h2>{{posts.post_title}} <span style="font-size: 20px">: {{posts.created_at}}</span></h2>
         <p>{{posts.post_body}}</p>
-        <c-button :type="'click'" :styl="'btn btn-primary m-1'" :html="'reply'"></c-button>
+        <c-form :form-name="'Add comment'" :post_id="posts.id"></c-form>
+<!--        <c-button :type="'click'" :styl="'btn btn-primary m-1'" :html="'reply'"></c-button>-->
         <c-button v-if="$route.name === 'my-posts' || $route.name === 'posts-trash'" :type="'click'" :styl="'btn btn-danger m-1'" :html="'delete'" @click="deletePost(posts.id)"></c-button>
         <c-button v-if="$route.name === 'my-posts'" :type="'click'" :styl="'btn btn-info m-1'" :html="'Edit'" @click="savePostIntoState(posts)"></c-button>
         <div class="p-3 m-2 border border-1 " v-for="comment in posts.comments">
@@ -30,10 +31,11 @@
 <script>
 import CImage from "./CImage.vue";
 import CButton from "./CButton.vue";
+import CForm from "./CForm.vue";
 
 export default {
   name: "CPostTemp",
-  components: {CButton, CImage},
+  components: {CForm, CButton, CImage},
   props : {
     posts: {required:true,type:Object}
   },

@@ -2,7 +2,7 @@
 <pre class='code code-css '>
 <label>Request</label>
 <code>
-  <div v-if="formName === 'Profile' || formName === 'Add photo' || formName === 'Add post' || formName === 'Edit post'">
+  <div v-if="formName === 'Profile' || formName === 'Add photo' || formName === 'Add post' || formName === 'Edit post'|| formName === 'Add comment'">
     <span class="js-comment" v-if="formName === 'Profile'">// form id = profile</span><span class="js-comment" v-if="formName === 'Add photo'">// form id = add-photo</span><span class="js-comment" v-if="formName === 'Add post'">// form id = add_post</span>
     <span class="js-comment" v-if="formName === 'Edit post'">// input type="hidden" name="_method" value="{{'PATCH'}}"</span>
     <span class="js-comment" v-if="name">// input type="text" name="name" value="{{name}}"</span>
@@ -11,6 +11,7 @@
      <span class="js-comment" v-if="post_title">// input type="text" name="post_title" value="{{post_title}}"</span>
     <span class="js-comment" v-if="description">// input type="text" name="description" value="{{description}}"</span>
      <span class="js-comment" v-if="post_body">// textarea name="post_body" value="{{post_body}}"</span>
+     <span class="js-comment" v-if="comment_body">// textarea name="post_body" value="{{comment_body}}"</span>
     <span class="js-comment" v-if="formName === 'Profile' || formName === 'Add photo'">// input type="file" name="file"</span>
 
      <span class="js-function">let <span class="js-punctuation">form</span><span class="js-punctuation"> = </span><span class="js-key">document</span><span class="js-punctuation">.</span><span class="js-method">getElementById</span><span class="js-punctuation">(</span><span class="js-string">'form id'</span><span class="js-punctuation">)</span>
@@ -69,7 +70,8 @@ export default {
     post_title: {type:String},
     title:{type:String},
     url_request: {type:String},
-    formName: {type:String}
+    formName: {type:String},
+    comment_body:{type:String}
   },
   data(){
     return{

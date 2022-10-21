@@ -1,7 +1,7 @@
 <template>
   <div class="row  ">
     <div class="col-md-8 border p-4">
-      <c-code :post="post" :user_input="user_input" :res="res" :url_request="url_request" :form-name="formName"/>
+      <c-code :comment_body="comment_body" :post="post" :user_input="user_input" :res="res" :url_request="url_request" :form-name="formName"/>
     </div>
     <div class="col-md-4  border p-4">
       <div v-if="formName === 'Register'">
@@ -52,6 +52,15 @@
           <c-input :name="'post_title'" @getInput="post.post_title = $event" :type="'text'" :placeholder="'Post title'" :title="'Post title'" :value="post.post_title"/>
           <c-text-area :name="'post_body'" @getInput="post.post_body = $event" :title="'Post body'">{{post.post_body}}</c-text-area>
           <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="'Save'"/>
+        </form>
+      </div>
+
+      <div v-if="formName === 'Add comment'">
+        <h4>{{formName}}</h4>
+        <form id="add-comment" @submit="addComment" enctype="multipart/form-data">
+          <c-input :type="'hidden'" :name="'post_id'" :value="post_id"/>
+          <c-text-area :name="'comment_body'" @getInput="comment_body = $event" :title="'Comment body'">{{comment_body}}</c-text-area>
+          <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="'Reply'"/>
         </form>
       </div>
       <div v-if="formName === 'Edit post'">
@@ -112,7 +121,8 @@ export default {
   components:{CTextArea, CImage, CButton, CInput, CCode},
   props:{
     formName:{type:String},
-    post_edit:{}
+    post_edit:{},
+    post_id:null
   },
   computed:{
     blanket(){
@@ -143,6 +153,8 @@ export default {
         return  this.$store.state.url_my_post_deleted;
       }else if (this.formName === 'Edit post'){
         return  this.$store.state.url_my_post_edit;
+      }else if (this.formName === 'Add comment'){
+        return  this.$store.state.url_add_comment;
       }
     },
     get_image(){
@@ -167,7 +179,8 @@ export default {
       post : {
         post_title : '',
         post_body : ''
-      }
+      },
+      comment_body:''
     }
   },
   created() {
@@ -183,6 +196,22 @@ export default {
     }
   },
   methods:{
+    async addComment(e) {
+      e.preventDefault()
+      let addComment = document.getElementById('add-comment');
+      let formData = new FormData(addComment);
+      this.blanket.style.display = 'block'
+      let res = await fetch(this.$store.state.url_add_comment , {
+        method: 'POST',
+        headers:{
+          'Accept': 'application/json',
+          'Authorization':  this.$store.state.access_token,
+        },
+        body: formData
+      })
+      this.blanket.style.display = 'none'
+      this.res = await res.json();
+    },
     async deletedPost(e){
       e.preventDefault();
       this.blanket.style.display = 'block'
