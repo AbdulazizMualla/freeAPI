@@ -22,7 +22,7 @@
         </div>
        <div class="m-5 mt-0">
          <h5><b><u>Request</u></b></h5>
-         <h6><b>url:</b> <span>https://api.tawfeg.com/api/register</span></h6>
+         <h6><b>url:</b> <span>https://api.tawfig.info/register</span></h6>
          <h6><b>method:</b> <span>POST</span></h6>
          <h6><b>headers:</b></h6>
          <p> Accept: application/json</p>
@@ -69,7 +69,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>https://api.tawfeg.com/api/login</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfig.info/login</span></h6>
           <h6><b>method:</b> <span>POST</span></h6>
           <h6><b>headers:</b></h6>
           <p> Accept: application/json</p>
@@ -122,7 +122,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>https://api.tawfeg.com/api/profile</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfig.info/profile</span></h6>
           <h6><b>method:</b> <span>POST</span></h6>
           <h6><b>headers:</b></h6>
           <p> Accept: application/json</p>
@@ -175,7 +175,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>https://api.tawfeg.com/api/photos</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfig.info/photos</span></h6>
           <h6><b>method:</b> <span>POST</span></h6>
           <h6><b>headers:</b></h6>
           <p> Accept: application/json</p>
@@ -228,11 +228,11 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>https://api.tawfeg.com/api/photos</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfig.info/photos</span></h6>
           <h6><b>method:</b> <span>GET</span></h6>
           <h5><b><u>Response</u></b></h5>
           <p>Type: json</p>
-          <p><b>We used Data Pagination:</b>The sum of the values to be returned is 100. You need to fetch more results. Add the param page to the path to the example (http://127.0.0.1:8000/api/photos?page=5)<u class="text-danger"> We recommend that you look at the results by visiting the Test Online page</u></p>
+          <p><b>We used Data Pagination:</b>The sum of the values to be returned is 100. You need to fetch more results. Add the param page to the path to the example (http://tawfig.info/api/photos?page=5)<u class="text-danger"> We recommend that you look at the results by visiting the Test Online page</u></p>
           <p>data: {[{id , title , description , photo_url ,  user {id ,name , email , profile{description , file_url}}}], links{first , last , prev ,next}, meta{current_page , from , last_page, links [{url,label, active}], path , per_page , to , total}} </p>
           <div>
             <h5><b><u>Error handling</u></b></h5>
@@ -264,7 +264,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>https://api.tawfeg.com/api/my-photos</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfig.info/my-photos</span></h6>
           <h6><b>method:</b> <span>GET</span></h6>
           <h6><b>headers:</b></h6>
           <p> Authorization:  access_token <span class="text-danger">(Token returned after login or registration)</span></p>
@@ -301,7 +301,7 @@
         </div>
         <div class="m-5 mt-0">
           <h5><b><u>Request</u></b></h5>
-          <h6><b>url:</b> <span>https://api.tawfeg.com/api/photos/{photoId}</span></h6>
+          <h6><b>url:</b> <span>https://api.tawfig.info/photos/{photoId}</span></h6>
           <h6><b>method:</b> <span>DELETE</span></h6>
           <h6><b>headers:</b></h6>
           <p> Accept: application/json</p>
@@ -326,6 +326,183 @@
                 <td>404</td>
                 <td>Not Found</td>
                 <td>the photo Id incorrect, or the photo is deleted</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>500</td>
+                <td>Internal Server Error</td>
+                <td>A server error occurred, try again when this error is repeated, contact us</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>You have not access_token , or you don't have this photo</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="d-flex ">
+          <div class="list">8</div>
+          <h3>Add post</h3>
+        </div>
+        <div class="m-5 mt-0">
+          <h5><b><u>Request</u></b></h5>
+          <h6><b>url:</b> <span>https://api.tawfig.info/posts</span></h6>
+          <h6><b>method:</b> <span>POST</span></h6>
+          <h6><b>headers:</b></h6>
+          <p> Accept: application/json</p>
+          <p> Authorization:  access_token <span class="text-danger">(Token returned after login or registration)</span></p>
+          <h6><b>body:</b></h6>
+          <p>Type: FormData</p>
+          <p>data:(input name=post_title(string - required)) , (input name=post_body(string)))</p>
+          <h5><b><u>Response</u></b></h5>
+          <p>Type: json</p>
+          <p>data: {message {id , post_title , post_body ,  user {id ,name , email , profile {description ,file_url}}}} </p>
+          <div>
+            <h5><b><u>Error handling</u></b></h5>
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">status</th>
+                <th scope="col">statusText</th>
+                <th scope="col">description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>422</td>
+                <td>Unprocessable Entity</td>
+                <td>The given data was invalid : There may be required data missing</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>500</td>
+                <td>Internal Server Error</td>
+                <td>A server error occurred, try again when this error is repeated, contact us</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>You have not access_token</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="d-flex ">
+          <div class="list">9</div>
+          <h3>get all the posts that have been posting by users</h3>
+        </div>
+        <div class="m-5 mt-0">
+          <h5><b><u>Request</u></b></h5>
+          <h6><b>url:</b> <span>https://api.tawfig.info/posts</span></h6>
+          <h6><b>method:</b> <span>GET</span></h6>
+          <h5><b><u>Response</u></b></h5>
+          <p>Type: json</p>
+          <p><b>We used Data Pagination:</b>The sum of the values to be returned is 100. You need to fetch more results. Add the param page to the path to the example (https://tawfig.info/api/photos?page=5)<u class="text-danger"> We recommend that you look at the results by visiting the Test Online page</u></p>
+          <p>data: {[{id , post_title , post_body , created_at, user {id ,name , email , profile{description , file_url}} , comments {id ,  comment_body ,  user {id ,name , email , profile{description , file_url}}}], links{first , last , prev ,next}, meta{current_page , from , last_page, links [{url,label, active}], path , per_page , to , total}} </p>
+          <div>
+            <h5><b><u>Error handling</u></b></h5>
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">status</th>
+                <th scope="col">statusText</th>
+                <th scope="col">description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>500</td>
+                <td>Internal Server Error</td>
+                <td>A server error occurred, try again when this error is repeated, contact us</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="d-flex ">
+          <div class="list">10</div>
+          <h3>View your posts</h3>
+        </div>
+        <div class="m-5 mt-0">
+          <h5><b><u>Request</u></b></h5>
+          <h6><b>url:</b> <span>https://api.tawfig.info/my-posts</span></h6>
+          <h6><b>method:</b> <span>GET</span></h6>
+          <h6><b>headers:</b></h6>
+          <p> Authorization:  access_token <span class="text-danger">(Token returned after login or registration)</span></p>
+          <h5><b><u>Response</u></b></h5>
+          <p>Type: json</p>
+          <p><b>We used Data Pagination:</b>The sum of the values to be returned is 100. You need to fetch more results. Add the param page to the path to the example (https://tawfig.info/api/photos?page=5)<u class="text-danger"> We recommend that you look at the results by visiting the Test Online page</u></p>
+          <p>data: {[{id , post_title , post_body , created_at, user {id ,name , email , profile{description , file_url}} , comments {id ,  comment_body ,  user {id ,name , email , profile{description , file_url}}}], links{first , last , prev ,next}, meta{current_page , from , last_page, links [{url,label, active}], path , per_page , to , total}} </p>
+          <div>
+            <h5><b><u>Error handling</u></b></h5>
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">status</th>
+                <th scope="col">statusText</th>
+                <th scope="col">description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>500</td>
+                <td>Internal Server Error</td>
+                <td>A server error occurred, try again when this error is repeated, contact us</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="d-flex ">
+          <div class="list">11</div>
+          <h3>Delete your post</h3>
+        </div>
+        <div class="m-5 mt-0">
+          <h5><b><u>Request</u></b></h5>
+          <h6><b>url:</b> <span>https://api.tawfig.info/posts/{postId}</span></h6>
+          <h6><b>method:</b> <span>DELETE</span></h6>
+          <h6><b>headers:</b></h6>
+          <p> Accept: application/json</p>
+          <p> Authorization:  access_token <span class="text-danger">(Token returned after login or registration)</span></p>
+          <h5><b><u>Response</u></b></h5>
+          <p>Type: json</p>
+          <p>data:{message: post deleted successfully} </p>
+          <div>
+            <h5><b><u>Error handling</u></b></h5>
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">status</th>
+                <th scope="col">statusText</th>
+                <th scope="col">description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>404</td>
+                <td>Not Found</td>
+                <td>the post Id incorrect, or the post is deleted</td>
               </tr>
               <tr>
                 <th scope="row">2</th>
