@@ -54,6 +54,15 @@
           <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="'Save'"/>
         </form>
       </div>
+      <div v-if="formName === 'Edit post'">
+        <h4>{{formName}}</h4>
+        <form id="edit-post" @submit="editPost" enctype="multipart/form-data">
+          <c-input :type="'hidden'" :name="'_method'" :value="'PATCH'"/>
+          <c-input :name="'post_title'" @getInput="post.post_title = $event" :type="'text'" :placeholder="'Post title'" :title="'Post title'" :value="post.post_title"/>
+          <c-text-area :name="'post_body'" @getInput="post.post_body = $event" :title="'Post body'" :value="post.post_body"></c-text-area>
+          <c-button :type="'submit'" :styl="'btn btn-primary mt-3'" :html="'Edit'"/>
+        </form>
+      </div>
 
       <div v-if="formName === 'Get posts'">
         <form id="posts" @submit="getPosts">
@@ -102,7 +111,8 @@ export default {
 
   components:{CTextArea, CImage, CButton, CInput, CCode},
   props:{
-    formName:{type:String}
+    formName:{type:String},
+    post_edit:{}
   },
   computed:{
     blanket(){
@@ -131,6 +141,8 @@ export default {
         return  this.$store.state.url_my_photo_deleted;
       }else if (this.formName === 'Deleted posts'){
         return  this.$store.state.url_my_post_deleted;
+      }else if (this.formName === 'Edit post'){
+        return  this.$store.state.url_my_post_edit;
       }
     },
     get_image(){
@@ -157,6 +169,11 @@ export default {
         post_body : ''
       }
     }
+  },
+  created() {
+   if (this.post_edit !== undefined){
+     this.post = this.post_edit
+   }
   },
   mounted() {
     if (this.$route.name === 'profile'){
@@ -250,6 +267,22 @@ export default {
       let formData = new FormData(addPost);
       this.blanket.style.display = 'block'
       let res = await fetch(this.$store.state.url_add_post , {
+        method: 'POST',
+        headers:{
+          'Accept': 'application/json',
+          'Authorization':  this.$store.state.access_token,
+        },
+        body: formData
+      })
+      this.blanket.style.display = 'none'
+      this.res = await res.json();
+    },
+    async editPost(e){
+      e.preventDefault()
+      let editPost = document.getElementById('edit-post');
+      let formData = new FormData(editPost);
+      this.blanket.style.display = 'block';
+      let res = await fetch(this.$store.state.url_my_post_edit , {
         method: 'POST',
         headers:{
           'Accept': 'application/json',

@@ -2,8 +2,9 @@
 <pre class='code code-css '>
 <label>Request</label>
 <code>
-  <div v-if="formName === 'Profile' || formName === 'Add photo' || formName === 'Add post'">
+  <div v-if="formName === 'Profile' || formName === 'Add photo' || formName === 'Add post' || formName === 'Edit post'">
     <span class="js-comment" v-if="formName === 'Profile'">// form id = profile</span><span class="js-comment" v-if="formName === 'Add photo'">// form id = add-photo</span><span class="js-comment" v-if="formName === 'Add post'">// form id = add_post</span>
+    <span class="js-comment" v-if="formName === 'Edit post'">// input type="hidden" name="_method" value="{{'PATCH'}}"</span>
     <span class="js-comment" v-if="name">// input type="text" name="name" value="{{name}}"</span>
     <span class="js-comment" v-if="email">// input type="email" name="email" value="{{email}}"</span>
     <span class="js-comment" v-if="title">// input type="text" name="title" value="{{title}}"</span>

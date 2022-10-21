@@ -17,9 +17,11 @@ export const store = createStore({
             url_my_post_delete: api_url+'posts/',
             url_my_photo_deleted: api_url+'deleted-photos',
             url_my_post_deleted: api_url+'my-posts/deleted/',
+            url_my_post_edit: '',
             access_token: localStorage.getItem('token'),
             user: JSON.parse(JSON.stringify(localStorage.getItem('user'))),
-            routeFrom: ''
+            routeFrom: '',
+            edit_post : null
         }
     },
     mutations:{
@@ -33,6 +35,12 @@ export const store = createStore({
         },
         setForceDeletePhotoUrl(state , photoId){
             state.url_my_photo_force_delete = api_url+'photos/'+photoId+'/force-delete'
+        },
+        setEditPostUrl(state , postId){
+            state.url_my_post_edit = api_url+'posts/'+postId
+        },
+        setPostData(state , post){
+            state.edit_post = post
         }
 
     },
