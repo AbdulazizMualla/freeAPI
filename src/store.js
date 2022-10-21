@@ -1,5 +1,5 @@
 import {createStore} from "vuex";
-const api_url = 'http://127.0.0.1:8000/api/';
+const api_url = 'https://tawfig.info/api/';
 export const store = createStore({
     state(){
         return{
