@@ -1,5 +1,5 @@
 import {createStore} from "vuex";
-const api_url = 'http://127.0.0.1:8000/api/';
+const api_url = 'https://api.tawfig.info/api/';
 export const store = createStore({
     state(){
         return{
@@ -11,13 +11,13 @@ export const store = createStore({
             url_my_photos: api_url+'my-photos',
             url_my_photo_delete: api_url+'photos/',
             url_my_photo_force_delete: '',
-            url_posts: api_url+'posts/',
+            url_posts: api_url+'posts',
             url_my_posts: api_url+'my-posts',
             url_add_post: api_url+'posts',
             url_add_comment: api_url+'comments',
             url_my_post_delete: api_url+'posts/',
             url_my_photo_deleted: api_url+'deleted-photos',
-            url_my_post_deleted: api_url+'my-posts/deleted',
+            url_my_post_deleted: api_url+'my-posts/deleted/',
             url_my_post_edit: '',
             access_token: localStorage.getItem('token'),
             user: JSON.parse(JSON.stringify(localStorage.getItem('user'))),
