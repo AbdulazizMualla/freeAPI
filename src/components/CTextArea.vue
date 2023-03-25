@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label :for="name">{{title}}</label>
-    <textarea :id="id" :name="name" class="form-control" v-model="value"  @input="sendInput"></textarea>
+    <textarea :id="id" :name="name" class="form-control" :value="value"  @input="sendInput"></textarea>
 
   </div>
 </template>

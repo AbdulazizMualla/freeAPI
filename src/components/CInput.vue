@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label >{{title}}</label>
-    <input :id="id" :type="type" :name="name" class="form-control"  :placeholder="`Enter ${placeholder}`" v-model="value" @input="sendInput">
+    <input :id="id" :type="type" :name="name" class="form-control"  :placeholder="`Enter ${placeholder}`" :value="value" @input="sendInput">
   </div>
 </template>
 <script>
